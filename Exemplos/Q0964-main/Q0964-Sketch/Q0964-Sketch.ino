@@ -53,8 +53,8 @@
                Reader/PCD   Uno/101       Mega      Nano v3    Leonardo/Micro   Pro Micro
    Signal      Pin          Pin           Pin       Pin        Pin              Pin
    ---------------------------------------------------------------------------------------------------------
-   RST/Reset   RST          9             5         D9         RESET/ICSP-5     RST         2
-   SPI SS      SDA(SS)      10            53        D10        10               10          5
+   RST/Reset   RST          9             5         D9         RESET/ICSP-5     RST         22
+   SPI SS      SDA(SS)      10            53        D10        10               10          21
    SPI MOSI    MOSI         11 / ICSP-4   51        D11        ICSP-4           16          23
    SPI MISO    MISO         12 / ICSP-1   50        D12        ICSP-1           14          19
    SPI SCK     SCK          13 / ICSP-3   52        D13        ICSP-3           15          18
@@ -105,8 +105,8 @@ byte readCard[4];   // Stores scanned ID read from RFID Module
 byte masterCard[4];   // Stores master card's ID read from EEPROM
 
 // Create MFRC522 instance.
-constexpr uint8_t RST_PIN = 2;     // Configurable, see typical pin layout above
-constexpr uint8_t SS_PIN = 5;     // Configurable, see typical pin layout above
+constexpr uint8_t RST_PIN = 22;     // Configurable, see typical pin layout above
+constexpr uint8_t SS_PIN = 21;     // Configurable, see typical pin layout above
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
@@ -127,7 +127,7 @@ void setup() {
   digitalWrite(blueLed, LED_OFF); // Make sure led is off
 
   //Protocol Configuration
-  Serial.begin(9600);  // Initialize serial communications with PC
+  Serial.begin(115200);  // Initialize serial communications with PC
   SPI.begin();           // MFRC522 Hardware uses SPI protocol
   mfrc522.PCD_Init();    // Initialize MFRC522 Hardware
 
