@@ -1,22 +1,26 @@
-#include <ESP8266WiFi.h>
-#include <WiFiClient.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
-#include "DHTesp.h"
+#include <AsyncUDP.h>
 
-DHTesp dht;
+//#include <dummy.h>
 
-const char* ssid = "nome_wifi";
-const char* password = "senha";
+// #include <ESP8266WiFi.h>
+// #include <WiFiClient.h>
+// #include <ESP8266WebServer.h>
+// #include <ESP8266mDNS.h>
+//#include "DHTesp.h"
 
-ESP8266WebServer server(80);
+//DHTesp dht;
+
+const char* ssid = "mariah";
+const char* password = "mariah2012";
+
+//ESP8266WebServer server(80);
 
 
 void handleRoot() {
-  String umidade = String(dht.getHumidity());
+//  String umidade = String(dht.getHumidity());
   String temperatura = String(dht.getTemperature());
  
-  server.send(200, "text/plain", umidade+"e"+temperatura);  // 70.0e23.0
+//  server.send(200, "text/plain", umidade+"e"+temperatura);  // 70.0e23.0
 }
 
 void handleNotFound(){
