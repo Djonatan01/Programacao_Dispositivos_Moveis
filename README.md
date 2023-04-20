@@ -3,7 +3,7 @@
 
  **Minhas Redes Sociais:**
 
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)]()diegojonatanmiranda@gmail.com
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)]()  diegojonatanmiranda@gmail.com
 
 [![FACEBOOK](https://img.shields.io/badge/Facebook-Connect-brightgreen?style=for-the-badge&labelColor=black&logo=facebook)](https://www.facebook.com/Diego.Jonatan.djm)
  
