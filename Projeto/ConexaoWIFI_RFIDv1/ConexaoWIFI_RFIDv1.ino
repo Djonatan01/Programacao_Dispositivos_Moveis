@@ -1,4 +1,18 @@
 #include <WiFi.h>
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define RST_PIN   22    
+#define SS_PIN    21    
+
+String content= "";
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance
+
+/* Set your new UID here! */
+#define NEW_UID {0xDE, 0xAD, 0xBE, 0xEF}
+
+MFRC522::MIFARE_Key key;
 
 //nome da rede a ser utilizada
 const char* ssid     = "DIEGO";
@@ -26,7 +40,8 @@ void setup()
     server.begin();
 }
 
-void loop(){
+String testeFunc(String cartaoRFID){
+
 
  WiFiClient client = server.available();   // Lendo informações envidas pelo navegador
 
@@ -39,7 +54,8 @@ void loop(){
         if (c == '\n') {                   
           if (currentLine.length() == 0) {
             //enviar as informações do cartão RFID que foi lido
-            client.print("DC022607");
+            client.print("");
+            client.print(cartaoRFID);
             break;
           } else {    
             currentLine = "";
@@ -52,4 +68,33 @@ void loop(){
     // Encerrando a conexão
     client.stop();
   }
-}
+  //return content;
+  }
+void loop(){
+
+content="";
+
+  while (!Serial);     
+    SPI.begin();         
+    mfrc522.PCD_Init();  
+    //Serial.println(F("Warning: this example overwrites the UID of your UID changeable card, use with care!"));
+  
+  for (byte i = 0; i < 6; i++) {
+    key.keyByte[i] = 0xFF;
+  }
+  
+//  // Reset the loop if no new card present on the sensor/reader. This saves the entire process when idle. And if present, select one.
+  if ( ! mfrc522.PICC_IsNewCardPresent() || ! mfrc522.PICC_ReadCardSerial() ) {
+    delay(50);
+    return;
+  }
+  for (byte i = 0; i < mfrc522.uid.size; i++) {
+     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? "0" : ""));
+     content.concat(String(mfrc522.uid.uidByte[i], HEX));
+  } 
+  content.toUpperCase();
+  Serial.println(content);
+if (content != ""){
+  testeFunc(content);
+  }
+}  
