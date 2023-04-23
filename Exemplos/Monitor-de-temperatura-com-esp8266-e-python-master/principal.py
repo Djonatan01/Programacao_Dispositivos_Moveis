@@ -6,7 +6,7 @@ import threading
 def atualiza_dados():
     while 1:
         time.sleep(2)
-        resposta = requests.get('http://192.168.0.104/')
+        resposta = requests.get('http://192.168.1.8/')
         dados = resposta.text
         dados_separados = dados.split("e")  
         print(dados_separados[0])

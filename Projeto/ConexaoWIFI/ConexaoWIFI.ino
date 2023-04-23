@@ -38,7 +38,7 @@ void loop(){
         if (c == '\n') {                   
           if (currentLine.length() == 0) {
             //enviar as informações do cartão RFID que foi lido
-            client.print("Dados do cartão lido");
+            client.print("DC022607");
             break;
           } else {    
             currentLine = "";
