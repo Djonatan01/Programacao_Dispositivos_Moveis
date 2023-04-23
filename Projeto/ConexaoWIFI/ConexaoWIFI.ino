@@ -26,7 +26,7 @@ void setup()
 }
 
 void loop(){
-  
+
  WiFiClient client = server.available();   // Lendo informações envidas pelo navegador
 
   if (client) {                                     
@@ -40,16 +40,15 @@ void loop(){
             //enviar as informações do cartão RFID que foi lido
             client.print("Dados do cartão lido");
             break;
-          } else {    // if you got a newline, then clear currentLine:
+          } else {    
             currentLine = "";
           }
-        } else if (c != '\r') {  // if you got anything else but a carriage return character,
-          currentLine += c;      // add it to the end of the currentLine
+        } else if (c != '\r') { 
+          currentLine += c;      
         }
       }
     }
-    // close the connection:
+    // Encerrando a conexão
     client.stop();
-    //Serial.println("Client Disconnected.");
   }
 }
