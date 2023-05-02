@@ -1,22 +1,34 @@
 #include <MFRC522.h>
 #include <MFRC522Extended.h>
-#include <deprecated.h>
-#include <require_cpp11.h>
 #include <SPI.h>
 
- 
-#define SS_PIN 53
-#define RST_PIN 59
+//Bliblioteca que adiciona o SQLite (Lembrando que tem que pesquisar ela no SKETCH)
+#include <SQLite3.h>
+
+#define SS_PIN 21
+#define RST_PIN 22
+
+String content= "";
+
+
+SQLite3 db;
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
  
 void setup() 
 {
-  Serial.begin(9600);   // Initiate a serial communication
+  Serial.begin(115200);   // Initiate a serial communication
   SPI.begin();      // Initiate  SPI bus
   mfrc522.PCD_Init();   // Initiate MFRC522
   Serial.println("Approximate your card to the reader...");
   //Serial.println();
+
+  
+    //Puxa o diretório onde o BD ta salvo pra abrir ele
+    db.open("/home/djonatan/Documentos/GitHub/Programacao_Dispositivos_Moveis/Projeto/RFID/dbRFID.db");
+    //Cria a tabela para armazenar as informações do cartão RFID
+    db.exec("CREATE TABLE IF NOT EXISTS dados(id INTEGER PRIMARY KEY AUTOINCREMENT, data_hora TEXT, numCard TEXT)");
+    
 }
 void loop() 
 {
@@ -32,27 +44,20 @@ void loop()
   }
   //Show UID on serial monitor
   Serial.print("UID tag :");
-  String content= "";
   byte letter;
   for (byte i = 0; i < mfrc522.uid.size; i++) 
   {
-     //Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
-     //Serial.print(mfrc522.uid.uidByte[i], HEX);
      content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
      content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
   Serial.println();
   Serial.print("Message : ");
   content.toUpperCase();
-  if (content.substring(1) == "94 9D 46 7D") //change here the UID of the card/cards that you want to give access
-  {
-    Serial.println("Authorized access");
-    Serial.println();
-    delay(3000);
-  }
- 
- else   {
-    Serial.println(" Access denied");
-    delay(3000);
-  }
+  Serial.println(content);
+  
+    //Aqui eu nao sei se tem que colocar o "id" pra inserir valor nele ja que ele é auto incremento
+  String sql = "INSERT INTO dados(data_hora, numCard) VALUES(datetime('now', 'localtime'), '"+content+"')";
+  db.exec(sql);
+  
+  delay(1000);
 } 
