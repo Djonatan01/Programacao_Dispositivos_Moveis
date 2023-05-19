@@ -4,10 +4,11 @@ from Src.Model.BancoDados import FuncBd
 
 Func = Blueprint('func', __name__)
 
-@Func.route('/list', defaults={'page':1})
-@Func.route('/list/<int:page>')
+@Func.route('/list', defaults={'page':1}, methods=['GET','POST'])
+@Func.route('/list/<int:page>', methods=['GET','POST'])
 def listFunc(page):
-  return render_template('listaFuncionario.html', listData=FuncsController.List(page))
+  _funcFilter=request.form.get('nomeFuncionario')
+  return render_template('listaFuncionario.html', listData=FuncsController.List(page,_funcFilter))
 
 @Func.route('/createFunc', methods=['GET', 'POST'])
 def createFunc():

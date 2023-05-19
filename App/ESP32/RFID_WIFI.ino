@@ -1,5 +1,4 @@
 #include <HTTPClient.h>
-
 #include <MFRC522.h>
 #include <MFRC522Extended.h>
 #include <SPI.h>
@@ -7,7 +6,6 @@
 
 //Incluindo o sistema de senhas do sistema RFID
 #include "arduino_secrets.h"
-
 
 //Definição dos pinos do RFID
 #define SS_PIN 21

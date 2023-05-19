@@ -27,9 +27,15 @@ class FuncsController:
     db.session.delete(_func)
     db.session.commit()
     
-  def List(page, per_page=15):
-    query = FuncBd.query.paginate(page=page, per_page=per_page)
-    queryCount = FuncBd.query.count()
+  def List(page,_funcFilter, per_page=15):
+    print(_funcFilter)
+    if _funcFilter == None or len(_funcFilter)<1 :
+      query = FuncBd.query.paginate(page=page, per_page=per_page)
+      queryCount = FuncBd.query.count()
+    else: 
+      query = FuncBd.query.filter(FuncBd.nome.like('%'+_funcFilter+'%')).paginate(page=page, per_page=per_page)        
+      queryCount = FuncBd.query.count()
+
     return {
       "regFunc": query,
       "count": queryCount,

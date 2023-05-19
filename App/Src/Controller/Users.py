@@ -33,7 +33,7 @@ class UsersController:
       queryCount = UserBd.query.count()
     else: 
       print(_userFilter)
-      query = UserBd.query.filter_by(nome=_userFilter).paginate(page=page, per_page=per_page)  
+      query = UserBd.query.filter(UserBd.nome.like('%'+_userFilter+'%')).paginate(page=page, per_page=per_page)  
       queryCount = UserBd.query.count()
     
     return {
