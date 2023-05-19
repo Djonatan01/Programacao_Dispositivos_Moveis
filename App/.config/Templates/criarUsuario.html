@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2 style="text-align: center;">Cadastrar usuário</h2><br>
+
+<div class="container">
+{% for category, message in get_flashed_messages(with_categories=true) %}
+  {% if category == 'error' %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+  {% else %}
+  <div class="alert alert-success">
+        {{message}}
+  </div>
+  {% endif %}
+{% endfor %}
+<form method="POST" action="{{url_for('router.user.createUser')}}">
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="form-label" for="form3Example4">Matricula/RA</label>
+      <input type="text" minlength="6" maxlength="13" class="form-control" name="mat"><br>
+      <label class="form-label" for="form3Example4">Identificação RFID</label>
+      <input style="text-transform:uppercase" type="text" minlength="8" maxlength="8" class="form-control" name="rfid"><br>
+      <label class="form-label" for="form3Example4">Nome do usuário</label>
+      <input style="text-transform:uppercase" type="text" class="form-control" name="nome"><br>
+      <label class="form-label" for="form3Example4">Endereço</label>
+      <input style="text-transform:uppercase" type="text" class="form-control" name="endereco"><br>
+       <label class="form-label" for="form3Example4">Contato</label>
+      <input style="text-transform:uppercase" type="text" class="form-control" name="contato"><br>
+      <hr>        
+        <button type="submit" name="bt1" value="1" class="btn btn-secondary">Enviar</button>
+    </div>
+  </div>
+  <hr> 
+</div>
+</form>
+{% endblock conteudo %}

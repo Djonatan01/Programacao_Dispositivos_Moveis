@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<br>
+  <div class="row">
+    <label class="form-label" for="form3Example4">DATA</label>
+    <fieldset class="form-group col-md-2">
+    <form action="{{url_for('router.traffic.list')}}" method="POST">
+       <input id = "dataAtual" type="date" class="form-control" name="filtroData">      
+    </fieldset>    
+    <fieldset class="form-group col-md-4">
+      <button type="submit" name="bt1" value="1" class="btn btn-secondary">Filtrar</button>            
+    </fieldset>    
+    </form>
+  </div>
+  <br>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">RFID</th>
+            <th scope="col">DATA</th>
+            <th scope="col">HORA</th>
+            <th scope="col">STATUS</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for registro in listData['registros'].items %}
+        <tr>
+            <td>{{registro.rfid}}</td>
+            <td>{{registro.dt}}</td>
+            <td>{{registro.hr}}</td>
+            <td>{{registro.statusReg}}</td>
+        </tr>
+      {% endfor %}
+        </tbody>
+  </table>
+  <div style="display: flex;">
+    {% if listData['registros'].has_prev %}
+      <a href="{{ listData['registros'].prev_num }}"> «Anteriores |</a>
+    {% else %}
+      <p> «Anteriores |</p>
+    {% endif %}
+    
+    {% if listData['registros'].has_next %}      
+      {% if listData['page'] == 1 %}
+        <a href="list/{{ listData['registros'].next_num}}">| Próximos»</a>
+      {% else %}
+        <a href="{{ listData['registros'].next_num}}">| Próximos»</a>
+      {% endif %}        
+    {% else %}
+        <p>| Próximos»</p>
+    {% endif %}
+  </div>
+       
+{% endblock conteudo %}
