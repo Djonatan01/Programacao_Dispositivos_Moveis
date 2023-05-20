@@ -14,6 +14,13 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{url_for('router.home.index')}}">EasyInOut</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('router.about.sobre')}}">Sobre</a>
+                    </li>
+                </ul>
+            </div>
             <div class="text-end">
                 <a type="button" class="btn btn-outline-light me-2" href="{{url_for('router.login.login')}}">Login</a>                
             </div>
@@ -21,6 +28,7 @@
     </nav>
     <div class="container">
         {% block conteudo %}
+      
         {% endblock conteudo %}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

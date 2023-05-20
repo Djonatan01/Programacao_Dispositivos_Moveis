@@ -30,10 +30,10 @@ class RFID:
     now = datetime.now(sao_paulo)   
     data = now.strftime("%d/%m/%Y") 
     print(data)
-    if _data == None:
+    if _data == None or len(_data)<1:
       query = Registro.query.filter_by(dt=data).paginate(page=page, per_page=per_page)
     else: 
-      _dataFilter=datetime.strptime(_data, '%Y-%m-%d').strftime('%d/%m/%Y')   
+      _dataFilter = datetime.strptime(_data,'%Y-%m-%d').strftime('%d/%m/%Y')   
       query = Registro.query.filter_by(dt=_dataFilter).paginate(page=page, per_page=per_page)  
     
     return {
