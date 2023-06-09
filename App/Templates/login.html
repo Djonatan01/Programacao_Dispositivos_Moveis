@@ -1,5 +1,11 @@
-{% extends 'base1.html' %}
+{% extends 'base.html' %}
 {% block conteudo %}
+<br>
+{% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>  
+{% endfor %}
 <br>
 <section class="vh-100">
     <div class="container-fluid h-custom">
@@ -9,19 +15,23 @@
                     class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form method="POST" action="#">
+                <div>
+                  <p style="text-align:left; font-size: 20px; width: 700px;">Digite email e senha para realizar o login</p>
+                </div>
+                <br>
+                <form method="POST" action="{{url_for('router.login.makeLogin')}}">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form3Example3">Email</label>
-                        <input type="email" id="form3Example3" class="form-control form-control-lg"/>
+                        <input type="email" id="form3Example3" name="emailLogin" class="form-control form-control-lg"/>
                     </div>
                     <!-- Password input -->
                     <div class="form-outline mb-3">
                         <label class="form-label" for="form3Example4">Senha</label>                      
-                        <input type="password" id="form3Example4" class="form-control form-control-lg"/>
+                        <input type="password" id="form3Example4" name="passwdLogin" class="form-control form-control-lg"/>
                     </div>
                     <div class="text-center text-lg-start mt-4 pt-2">
-                        <button type="button" class="btn btn-secondary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                       <button type="submit" name="bt1" value="1" class="btn btn-secondary">Login</button>
                     </div>
                 </form>
             </div>

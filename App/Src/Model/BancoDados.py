@@ -1,4 +1,5 @@
 from confg import db
+from flask_login import UserMixin
 
 class Registro(db.Model):
   id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -28,7 +29,7 @@ class UserBd(db.Model):
     self.endereco = _endereco
     self.contato = _contato
 
-class FuncBd(db.Model):
+class FuncBd(UserMixin,db.Model):
   id = db.Column(db.Integer, primary_key=True, autoincrement=True)
   mat = db.Column(db.Integer, unique=True)
   nome = db.Column(db.String(150))

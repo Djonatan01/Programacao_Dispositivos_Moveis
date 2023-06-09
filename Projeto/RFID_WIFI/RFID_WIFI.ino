@@ -5,9 +5,12 @@
 #include <SPI.h>
 #include <WiFi.h>
 
+#include <Servo.h>
+
 //Incluindo o sistema de senhas do sistema RFID
 #include "arduino_secrets.h"
 
+Servo servo1; // Cria um objeto servo
 
 //Definição dos pinos do RFID
 #define SS_PIN 21
@@ -90,7 +93,7 @@ void enviarPagina(String cartaoRFID) {
   int httpResponseCode = http.POST(json);
   
   // Verifica o código de resposta da requisição
-  if (httpResponseCode > 0) {
+  if (httpResponseCode == 200) {
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
     String response = http.getString();

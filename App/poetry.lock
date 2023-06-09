@@ -179,6 +179,18 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-login"
+version = "0.6.2"
+description = "User authentication and session management for Flask."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Flask = ">=1.0.4"
+Werkzeug = ">=1.0.1"
+
+[[package]]
 name = "flask-sqlalchemy"
 version = "3.0.3"
 description = "Add SQLAlchemy support to your Flask application."
@@ -655,7 +667,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "c90a12e68a1ad6ad2ec1709c34ebe07e1734759ab556a70321f38faca3cb06b8"
+content-hash = "b9be4fe8cf5e307dc61acdfe6128447ec0b9a9bfdb570cf98b4a680a837038f5"
 
 [metadata.files]
 aiohttp = []
@@ -672,6 +684,7 @@ colorama = []
 cryptography = []
 debugpy = []
 flask = []
+flask-login = []
 flask-sqlalchemy = []
 frozenlist = []
 greenlet = []

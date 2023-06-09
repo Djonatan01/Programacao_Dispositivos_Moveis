@@ -3,6 +3,8 @@
 #include <MFRC522Extended.h>
 #include <SPI.h>
 #include <WiFi.h>
+// Projeto 13 - Servo motor controlado por Arduino
+#include <ESP32Servo.h>
 
 //Incluindo o sistema de senhas do sistema RFID
 #include "arduino_secrets.h"
@@ -10,10 +12,20 @@
 //Definição dos pinos do RFID
 #define SS_PIN 21
 #define RST_PIN 22
+#define greenLed 4
+#define redLed 2
+
+// Cria um objeto servo
+Servo servo1; 
 
 String content= "";
 
 String url = "https://app.easyinout.repl.co/traffic/register/";
+
+// Agrega o objeto servo1 ao pino digital 11
+static const int servoPin = 12;
+// Variável para armazenar a posição do servo1
+int pos = 0;
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 
@@ -39,6 +51,14 @@ void setup() {
     Serial.println("IP address: ");
     
     server.begin();
+
+    // Set servo PWM frequency to 50Hz
+  servo1.attach(servoPin);  
+  // Attach to servo and define minimum and maximum positions
+  // Modify as required
+
+   pinMode(redLed, OUTPUT);
+   pinMode(greenLed, OUTPUT);
 }
 
 void loop() {
@@ -82,18 +102,34 @@ void enviarPagina(String cartaoRFID) {
   
   // Envia a requisição POST com os dados JSON
   int httpResponseCode = http.POST(json);
-  
+    String response;
   // Verifica o código de resposta da requisição
-  if (httpResponseCode > 0) {
+  if (httpResponseCode == 200) {
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
-    String response = http.getString();
-    Serial.println(response);
+    response = http.getString();
+    Serial.println(response);   
   } else {
     Serial.print("Error code: ");
     Serial.println(httpResponseCode);
   }
-  
+
+  servoRet(response);
   // Fecha a conexão HTTP
   http.end();
+}
+
+void servoRet(String resposta){
+ if (resposta == "1") {               
+        servo1.write(90);
+        digitalWrite(greenLed, HIGH);         
+        delay(2500);
+        digitalWrite(greenLed, LOW);
+        servo1.write(1);
+      }else{
+        servo1.write(1);
+        digitalWrite(redLed, HIGH);
+        delay(2500);
+        digitalWrite(redLed, LOW);
+       }
 }

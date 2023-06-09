@@ -1,75 +1,119 @@
 {% extends 'base.html' %}
 {% block conteudo %}
-<h2 style="text-align: center;"> EasyInOut <p>Projeto de Controle de Acesso</p>
-</h2>
+<h1 style="text-align: center;"> EasyInOut </h1>
+<p style="text-align: center; font-size: 20px;">Sistema de Controle de Acesso</p>
 <div
-  class="container mr-md-3 pt-3 px-3 pt-md-5 px-md-5 bg-dark text-center text-white overflow-hidden d-flex">
-  <div class="bg-dark box-shadow mx-auto"
-    style="width: 50%; height: 350px; border-radius: 21px 0 0 21px;">
-    <img src="{{url_for('static', filename='Images/Lucas_Adati.jpg')}}"
-      class="rounded-circle" style="width: 200px; height: 200px;">
-    <div class="image-title">
-      <p>Lucas Adati de Paula</p>
-      <p>Desenvolvedor: Back-end</p>
+    class="container mr-md-3 pt-3 px-3 pt-md-5 px-md-5 bg-dark text-center text-white overflow-hidden d-flex">
+    <div class="bg-dark box-shadow mx-auto"
+        style="width: 50%; height: 25%;justify-content: center; border-radius: 21px 0 0 21px;">
+        <img src="{{url_for('static', filename='Images/Lucas_Adati.jpg')}}"
+            class="rounded-circle" style="width: 200px; height: 200px;">
+        <div class="image-title">
+            <p>Lucas Adati de Paula</p>
+            <p>Desenvolvedor: Back-end</p>
+        </div>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="https://github.com/adaatii" target="_blank"
+                    class="nav-link px-1 text-secondary">
+                    <img class="item"
+                        src="{{url_for('static', filename='Images/GitHub-50x50.png')}}"
+                        alt="Github">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="https://www.linkedin.com/in/lucas-adati-de-paula/"
+                    target="_blank" class="nav-link px-2 text-secondary">
+                    <img class="item"
+                        src="{{url_for('static', filename='Images/Linkedin-50x50.png')}}"
+                        alt="Linkedin">
+                </a>
+            </li>
+        </ul>
     </div>
-  </div>
-  <div class="bg-dark box-shadow mx-auto"
-    style="width: 50%; height: 350px; border-radius: 0 21px 21px 0;">
-    <img src="{{url_for('static', filename='Images/Diego_Jonatan.jpg')}}"
-      class="rounded-circle" style="width: 200px; height: 200px;">
-    <div class="image-title">
-      <p>Diego Jonatan de Miranda</p>
-      <p>Desenvolvedor: Back-end</p>
+    <div
+        class="bg-dark box-shadow mx-auto d-flex flex-column justify-content-center align-items-center"
+        style="width: 50%; height: 25%;justify-content: center; border-radius: 0 21px 21px 0;">
+        <img src="{{url_for('static', filename='Images/Diego_Jonatan.jpg')}}"
+            class="rounded-circle" style="width: 200px; height: 200px;">
+        <div class="image-title text-center">
+            <p>Diego Jonatan de Miranda</p>
+            <p>Desenvolvedor: Back-end</p>
+        </div>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="https://github.com/Djonatan01" target="_blank"
+                    class="nav-link px-1 text-secondary">
+                    <img class="item"
+                        src="{{url_for('static', filename='Images/GitHub-50x50.png')}}"
+                        alt="Github">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a
+                    href="https://www.linkedin.com/in/diego-jonatan-miranda-7b061bbb/"
+                    target="_blank" class="nav-link px-2 text-secondary">
+                    <img class="item"
+                        src="{{url_for('static', filename='Images/Linkedin-50x50.png')}}"
+                        alt="Linkedin">
+                </a>
+            </li>
+        </ul>
     </div>
-  </div>
 </div>
 <div class="container pt-5 pb-5">
-  <h2>EasyInOut:</h2>
-  <p>Nosso projeto de faculdade, EasyInOut, consiste em um sistema inovador de
-    controle de acesso utilizando
-    as tecnologias ESP32 e RFID para alunos, professores e funcionários. Com o
-    EasyInOut, buscamos simplificar e agilizar o processo de entrada e saída nas
-    dependências da instituição, proporcionando uma experiência conveniente para
-    todos. O sistema utiliza cartões ou tags RFID personalizados para cada
-    usuário autorizado, que são lidos pelo ESP32 e enviados para uma página web
-    intuitiva e acessível por meio de navegadores web comuns. Através dessa
-    página, os usuários podem acompanhar suas entradas e saídas registradas pelo
-    sistema. Com o EasyInOut, é possível ter um controle de acesso otimizado,
-    reforçar a segurança nas instalações e simplificar o gerenciamento do
-    sistema. Acreditamos que essa solução trará benefícios significativos para a
-    instituição, promovendo um ambiente acadêmico mais organizado, seguro e
-    eficiente.</p>
+    <h2>EasyInOut:</h2>
+    <p align="justify">O projeto EasyInOut, consiste em um
+        sistema de controle de acesso utilizando
+        as tecnologias ESP32 e RFID para alunos, professores e funcionários. Com
+        o
+        EasyInOut, buscamos simplificar e agilizar o processo de entrada e saída
+        nas
+        dependências da instituição, proporcionando uma experiência conveniente
+        para
+        todos. O sistema utiliza cartões ou tags RFID para cada
+        usuário autorizado, que são lidos pelo leitor de RFID, enviados através do ESP32 para uma página
+        web
+        intuitiva e acessível por meio de navegadores web comuns. Com o
+        EasyInOut, é possível ter um controle de acesso otimizado,
+        reforçar a segurança nas instalações e simplificar o gerenciamento do
+        sistema. Acreditamos que essa solução trará benefícios significativos
+        para a
+        instituição, promovendo um ambiente acadêmico mais organizado, seguro e
+        eficiente.</p>
 
-  <h2>Benefícios do Sistema EasyInOut:</h2>
-  <ul>
-    <li>
-      <strong>Controle de acesso otimizado:</strong> Com a tecnologia RFID e o
-      ESP32, o EasyInOut proporciona um processo rápido e preciso de registro de
-      entrada e saída, evitando atrasos e congestionamentos.
-    </li>
-    <li>
-      <strong>Reforço da segurança:</strong> O monitoramento em tempo real das
-      entradas e saídas facilita a identificação imediata de qualquer
-      irregularidade, contribuindo para um controle de acesso mais efetivo e
-      para a segurança geral das instalações.
-    </li>
-    <li>
-      <strong>Gerenciamento simplificado:</strong> O EasyInOut disponibiliza um
-      painel administrativo intuitivo, permitindo o cadastro e exclusão de
-      usuários autorizados, geração de relatórios e configuração de permissões
-      de acesso de maneira fácil e rápida.
-    </li>
-  </ul>
+    <h2>Benefícios do Sistema EasyInOut:</h2>
+    <ul>
+        <li>
+            <strong>Controle de acesso otimizado:</strong> Com a tecnologia RFID
+            e o ESP32, o EasyInOut proporciona um processo rápido de
+            registro de entrada e saída.
+        </li>
+        <li>
+            <strong>Reforço da segurança:</strong> O monitoramento em tempo real
+            das entradas e saídas facilita a identificação imediata de qualquer
+            irregularidade, contribuindo para um controle de acesso mais efetivo
+            e para a segurança geral das instalações.
+        </li>
+        <li>
+            <strong>Gerenciamento simplificado:</strong> O EasyInOut
+            disponibiliza um
+            painel administrativo intuitivo, permitindo o cadastro, atualização e exclusão de
+            de maneira fácil e rápida.
+        </li>
+    </ul>
 
-  <h2>Conclusão:</h2>
-  <p>O projeto EasyInOut é uma solução inovadora de controle de acesso,
-    utilizando a combinação do ESP32 e tecnologia RFID, com o objetivo de
-    simplificar e aprimorar o processo de entrada e saída de alunos, professores
-    e funcionários etc em uma instituição. Através de sua integração com a
-    Página Web EasyInOut, estamos desenvolvendo um sistema eficiente, seguro e
-    de fácil gerenciamento. Acreditamos que o EasyInOut trará benefícios
-    significativos, promovendo um ambiente acadêmico mais organizado, seguro e
-    conveniente para todos os usuários.</p>
+    <p align="justify">O projeto EasyInOut é uma solução inovadora de controle
+        de acesso,
+        utilizando a combinação do ESP32 e tecnologia RFID, com o objetivo de
+        simplificar e aprimorar o processo de entrada e saída de alunos,
+        professores
+        e funcionários etc. Através de sua integração com a
+        Página Web EasyInOut, estamos desenvolvendo um sistema eficiente, seguro
+        e
+        de fácil gerenciamento. Acreditamos que o EasyInOut trará benefícios
+        significativos, promovendo um ambiente acadêmico mais organizado, seguro
+        e
+        conveniente para todos os usuários.</p>
 </div>
-
 {% endblock conteudo %}

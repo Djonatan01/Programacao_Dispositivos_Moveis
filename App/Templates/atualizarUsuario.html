@@ -18,15 +18,15 @@
   <div class="row">
     <div class="col-sm-6">
       <label class="form-label" for="form3Example4">Matricula/RA</label>
-      <input type="text" class="form-control" name="mat" value="{{user.mat}}"><br>
+      <input type="text" minlength="6" maxlength="13" class="form-control" name="mat" value="{{user.mat}}"><br>
       <label class="form-label" for="form3Example4">Identificação RFID</label>
       <input type="text" class="form-control" name="rfid" value="{{user.rfid}}"><br>
       <label class="form-label" for="form3Example4">Nome do usuário</label>
       <input type="text" class="form-control" name="nome" value="{{user.nome}}"><br>
       <label class="form-label" for="form3Example4">Endereço</label>
       <input type="text" class="form-control" name="endereco" value="{{user.endereco}}"><br>
-      <label class="form-label" for="form3Example4">Contato</label>
-      <input type="text" class="form-control" name="contato" value="{{user.contato}}"><br>
+      <label class="form-label" for="form3Example4">Celular</label>
+      <input type="text" class="form-control" name="contato" value="{{user.contato}}" id="celular"><br>
       <hr>        
         <button type="submit" name="bt1" value="1" class="btn btn-secondary">Enviar</button>
     </div>
